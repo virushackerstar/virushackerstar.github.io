@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Phenix Globe</title>
+    <script defer src="app.js"></script>
+
+    <style type="text/css" media="all">
+      .grid-container {
+        display: grid;
+        grid-template-columns: 50% auto;
+        grid-template-rows: 55rem 55rem;
+        padding: 10px;
+        /*cursor: grab;*/
+      }
+
+      .grid-item1 {
+        border: 2px solid;
+        border-color: white;
+        font-size: 30px;
+        text-align: center;
+        background-image: url(img/Ellipse\ 5.png);
+        background-position: center;
+        background-color: black;
+        color: aliceblue;
+      }
+
+      .grid-item2 {
+        border: 2px solid;
+        border-color: white;
+        font-size: 30px;
+        text-align: center;
+        background-image: url(img/Ellipse\ 5.png);
+        background-position: center;
+        background-color: black;
+        color: aliceblue;
+      }
+      .grid-item3 {
+        border: 2px solid;
+        border-color: white;
+        font-size: 30px;
+        text-align: center;
+        background-image: url(img/Ellipse\ 5.png);
+        background-position: center;
+        background-color: black;
+        color: aliceblue;
+      }
+      .grid-item4 {
+        border: 2px solid;
+        border-color: white;
+        font-size: 30px;
+        text-align: center;
+        background-image: url(img/Ellipse\ 5.png);
+        background-position: center;
+        background-color: black;
+        color: aliceblue;
+      }
+
+      div:hover {
+        display: block;
+        scale: 1.02;
+        border-color: aqua;
+        border-radius: 5px;
+        color: aqua;
+        scale: 1.02;
+        z-index: 100;
+      }
+      div {
+        transition: all 0.25s;
+      }
+
+      .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black;
+        z-index: 10;
+      }
+
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 300px;
+        background-color: white;
+        color: rgb(145, 20, 20);
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: 5px;
+        left: 59%;
+        transition: all 0.25s;
+        z-index: 10;
+      }
+
+      .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 22%;
+        right: 100%;
+        margin-top: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent white transparent transparent;
+        z-index: 10;
+      }
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="grid-container">
+      <div class="grid-item1 tooltip" id="animation1">
+        Animation1
+        <span class="tooltiptext">This animation is defaul anmation</span>
+      </div>
+      <div class="grid-item2 tooltip" id="animation2">
+        Animation2
+        <span class="tooltiptext"
+          >These lines are combined to the United State</span
+        >
+      </div>
+      <div class="grid-item3 tooltip" id="animation3">
+        Animation3
+        <span class="tooltiptext"
+          >These lines are distributed from the United State</span
+        >
+      </div>
+      <div class="grid-item4 tooltip" id="animation4">Animation4</div>
+      <span class="tooltiptext">This animation is a test animation</span>
+    </section>
+  </body>
+</html>
