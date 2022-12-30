@@ -1295,9 +1295,9 @@
                 (n.oldMouseY = t.clientY),
                 n.handleDragStart();
             }),
-            d()(this, "handleMouseOver", function (t) {
-              (n.mouse.x = t.clientX), (n.mouse.y = t.clientY), n.play();
-            }),
+            // d()(this, "handleMouseOver", function (t) {
+            //   (n.mouse.x = t.clientX), (n.mouse.y = t.clientY), n.play();
+            // }),
             // d()(this, "handleMouseOut", function (t) {
             //   (n.mouse.x = t.clientX), (n.mouse.y = t.clientY), n.pause();
             // }),
