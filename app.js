@@ -1,3 +1,4 @@
+
 !(function (t) {
   var e = {};
   function n(r) {
@@ -52,6 +53,9 @@
     (n.p = "/assets/compiled/js/"),
     n((n.s = 2469));
 })({
+  123 : function xxx(){
+  alert('123');
+},
   1: function (t, e) {
     var n = (t.exports = { version: "2.5.7" });
     "number" == typeof __e && (__e = n);
@@ -950,6 +954,7 @@
             {
               key: "pause",
               value: function () {
+                alert('123');
                 cancelAnimationFrame(this.animationFrame);
               },
             },
@@ -1293,13 +1298,9 @@
             d()(this, "handleMouseOver", function (t) {
               (n.mouse.x = t.clientX), (n.mouse.y = t.clientY), n.play();
             }),
-            d()(this, "handleMouseOut", function (t) {
-              (n.mouse.x = t.clientX),
-                (n.mouse.y = t.clientY),
-                setTimeout(() => {
-                  n.pause();
-                }, 1e3);
-            }),
+            // d()(this, "handleMouseOut", function (t) {
+            //   (n.mouse.x = t.clientX), (n.mouse.y = t.clientY), n.pause();
+            // }),
             d()(this, "handleDragging", function () {
               n.isDragging &&
                 ((n.tension = 1 + Math.abs(n.oldRotationX)),
@@ -1603,36 +1604,53 @@
               key: "drawLines",
               value: function () {
                 var t = this;
+                let startCountryBuffer = [m.cn, m.jp, m.jp, m.ua, m.fr, m.sa, m.eg, m.au, m.br, m.gb];
+                let t1, t2, t3;
                 return (
                   clearInterval(this.lineInterval),
-                  void (this.lineInterval = setInterval(
-                    function () {
-                      if (t.dom.container.id === "animation1") {
-                        t.drawLine();
-                      } else {
-                        for (let i = 0; i < 10; i++) {
-                          if (t.dom.container.id === "animation2")
-                            t.drawLineToEnd(m.us);
-                          if (t.dom.container.id === "animation3")
-                            t.drawLineToStart(m.us);
-                        }
+                  void (this.lineInterval = setInterval(function () {
+                    switch(t.dom.container.id) {
+                      case "animation1" :
+                        t1 = t;
+                      case "animation2" :
+                        t3 = t;
+                      case "animation3" :
+                        t2 = t;
+                        break;
+                    }
+                    if(t.dom.container.id === "animation1"){
+                       setTimeout(()=> {
+                          
+                        },1e3)
+                      t1.drawLine();
+                    }
+                    if(t.dom.container.id === "animation2"){
+                        setTimeout(()=> {
+
+                        },1e3)
+                      for (let i = 0; i < 10; i++) {
+                        t3.drawLineToStart(m.us);
                       }
-                      if (t.dom.container.id === "animation4") {
-                        t.drawLine();
+                    }
+                    if(t.dom.container.id === "animation3") {
+                        setTimeout(()=> {
+                          
+                        },1e3)
+                      for (let i = 0; i < 10; i++) {
+                         t2.drawLineToEnd(m.us);
                       }
-                    },
-                    t.dom.container.id === "animation1" ? 1e3 : 3e3
-                  ))
+                    }
+                  }, 2e3))
                 );
                 if (0 === this.lineCount)
                   for (var e = 0; e < 5; e += 1) {
                     for (let i = 0; i < 10; i++) {
                       if (t.dom.container.id === "animation1") t.drawLine();
                       if (t.dom.container.id === "animation2")
-                        t.drawLineToEnd(m.us);
+                       
+                      t.drawLineToStart(m.us);
                       if (t.dom.container.id === "animation3")
-                        t.drawLineToStart(m.us);
-                      if (t.dom.container.id === "animation4") t.drawLine();
+                         t.drawLineToEnd(m.us);
                     }
                   }
               },
@@ -1693,7 +1711,7 @@
                         t.hideLine(c);
                         var e = t.currentLines.indexOf(c);
                         e > -1 && t.currentLines.splice(e, 1);
-                      }, 3e3);
+                      }, 2e3);
                 } else this.drawLineToEnd(position);
               },
             },
@@ -1752,7 +1770,7 @@
                         t.hideLine(c);
                         var e = t.currentLines.indexOf(c);
                         e > -1 && t.currentLines.splice(e, 1);
-                      }, 3e3);
+                      }, 1e3);
                 } else this.drawLineToStart(position);
               },
             },
@@ -1850,22 +1868,25 @@
               value: function () {
                 window.addEventListener("resize", this.handleResize),
                   this.isStatic ||
-                    window.addEventListener("mouseup", this.handleMouseUp),
-                  window.addEventListener("mousemove", this.handleMouseMove),
-                  this.el.addEventListener(
-                    "touchstart",
-                    this.handleTouchStart,
-                    { passive: !0 }
-                  ),
-                  window.addEventListener("touchmove", this.handleTouchMove),
-                  window.addEventListener("touchend", this.handleMouseUp),
-                  window.addEventListener(
-                    "handleMouseOver",
-                    this.handleMouseUp
-                  ),
-                  (this.el.addEventListener("mouseover", this.handleMouseOver),
-                  this.el.addEventListener("mouseout", this.handleMouseOut),
-                  this.el.addEventListener("mousedown", this.handleMouseDown));
+                    (window.addEventListener("mouseup", this.handleMouseUp),
+                    window.addEventListener("mousemove", this.handleMouseMove),
+                    this.el.addEventListener(
+                      "touchstart",
+                      this.handleTouchStart,
+                      { passive: !0 }
+                    ),
+                    window.addEventListener("touchmove", this.handleTouchMove),
+                    window.addEventListener("touchend", this.handleMouseUp),
+                    window.addEventListener(
+                      "handleMouseOver",
+                      this.handleMouseUp
+                    ),
+                    this.el.addEventListener("mouseover", this.handleMouseOver),
+                    this.el.addEventListener("mouseout", this.handleMouseOut),
+                    this.el.addEventListener(
+                      "mousedown",
+                      this.handleMouseDown
+                    ));
               },
             },
             {
@@ -1932,9 +1953,7 @@
       document.querySelector(".grid-item2") &&
         new dt(document.querySelector(".grid-item2")),
       document.querySelector(".grid-item3") &&
-        new dt(document.querySelector(".grid-item3")),
-      document.querySelector(".grid-item4") &&
-        new dt(document.querySelector(".grid-item4"));
+        new dt(document.querySelector(".grid-item3"));
   },
   25: function (t, e, n) {
     var r = n(42);
@@ -29970,8 +29989,7 @@
           "Object",
           a
         );
-    };
-  },
+    };},
   96: function (t, e, n) {
     "use strict";
     var r = n(5),
@@ -30204,4 +30222,5 @@
       return { value: e, done: !!t };
     };
   },
+  
 });

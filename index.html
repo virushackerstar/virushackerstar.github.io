@@ -7,128 +7,200 @@
     <script defer src="app.js"></script>
 
     <style type="text/css" media="all">
+      body {
+        overflow-y: hidden;
+      }
+
       .grid-container {
         display: grid;
-        grid-template-columns: 50% auto;
-        grid-template-rows: 55rem 55rem;
+        grid-template-columns: 60rem;
+        grid-template-rows: 60rem 60rem 60rem;
         padding: 10px;
+        overflow-y: hidden;
         /*cursor: grab;*/
+        float: right;
       }
 
       .grid-item1 {
-        border: 2px solid;
-        border-color: white;
         font-size: 30px;
         text-align: center;
         background-image: url(img/Ellipse\ 5.png);
         background-position: center;
-        background-color: black;
         color: aliceblue;
+        /*display: block;*/
+        float: right;
       }
 
       .grid-item2 {
-        border: 2px solid;
-        border-color: white;
         font-size: 30px;
         text-align: center;
         background-image: url(img/Ellipse\ 5.png);
         background-position: center;
-        background-color: black;
         color: aliceblue;
+        /*display: none;*/
       }
       .grid-item3 {
-        border: 2px solid;
-        border-color: white;
         font-size: 30px;
         text-align: center;
         background-image: url(img/Ellipse\ 5.png);
         background-position: center;
-        background-color: black;
         color: aliceblue;
-      }
-      .grid-item4 {
-        border: 2px solid;
-        border-color: white;
-        font-size: 30px;
-        text-align: center;
-        background-image: url(img/Ellipse\ 5.png);
-        background-position: center;
-        background-color: black;
-        color: aliceblue;
+        /*display: block;*/
       }
 
-      div:hover {
-        display: block;
-        scale: 1.02;
-        border-color: aqua;
-        border-radius: 5px;
-        color: aqua;
-        scale: 1.02;
-        z-index: 100;
+      .btn-group button {
+        background-color: #04AA6D;
+        border: 1px solid green;
+        color: white;
+        padding: 10px 24px;
+        cursor: pointer;
+        float: right;
+        margin-top: -25px;
+        margin-right: 5px;
       }
-      div {
-        transition: all 0.25s;
-      }
-
-      .tooltip {
-        position: relative;
-        display: inline-block;
-        border-bottom: 1px dotted black;
-        z-index: 10;
-      }
-
-      .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 300px;
-        background-color: white;
-        color: rgb(145, 20, 20);
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px 0;
-        position: absolute;
-        z-index: 1;
-        top: 5px;
-        left: 59%;
-        transition: all 0.25s;
-        z-index: 10;
-      }
-
-      .tooltip .tooltiptext::after {
+      .btn-group:after {
         content: "";
-        position: absolute;
-        top: 22%;
-        right: 100%;
-        margin-top: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: transparent white transparent transparent;
-        z-index: 10;
+        clear: both;
+        display: table;
       }
-      .tooltip:hover .tooltiptext {
-        visibility: visible;
+
+      .btn-group button:not(:last-child) {
+        border-right: none;
+      }
+
+      .btn-group button:hover {
+        background-color: #3e8e41;
+      }
+      .section {
+        border: 1px outset #3EFFF2;  
+        width: 40rem;
+      }
+      .container {
+        background: black;
+        height: 57.5rem; 
+        position: fixed;
+      }
+      .description {
+        color: #3EFFF2; 
+        padding-left: 20px;
+        font-size: 1.5rem;
+      }
+      .section_title {
+        padding-left: 20px;
+        color: #3EFFF2;
+      }
+      .animation {
+        position: fixed;
+        width: 61rem;
+        height: 55rem;
+        top: 20px;
+        right: 12px;
+        bottom: 30px;
+        background-color: black;
+        animation-name: example;
+        animation-duration: 2s;
+        display: none;
+        opacity: 0;
+      }
+
+      @keyframes example {
+        from {opacity: 1;}
+        to {opacity: 0;}
       }
     </style>
+    <script type="text/javascript">
+      function Animation(e) {
+        switch(e.id) {
+          case "section1":
+            document.getElementById("animation1").style.cssText = 'display: block';
+            document.getElementById("animation2").style.cssText = 'display: none';
+            document.getElementById("animation3").style.cssText = 'display: none';
+            document.getElementById("animation").style.cssText = 'display: block';
+            break;
+          case "section2":
+            document.getElementById("animation1").style.cssText = 'display: none';
+            document.getElementById("animation2").style.cssText = 'display: block';
+            document.getElementById("animation3").style.cssText = 'display: none';
+            document.getElementById("animation").style.cssText = 'display: block';
+            break;
+          case "section3":
+            document.getElementById("animation3").style.cssText = 'display: block';
+            document.getElementById("animation2").style.cssText = 'display: none';
+            document.getElementById("animation1").style.cssText = 'display: none';
+            document.getElementById("animation").style.cssText = 'display: block';
+            break;
+          default:
+            document.getElementById("animation1").style.cssText = 'display: none';
+            document.getElementById("animation2").style.cssText = 'display: block';
+            document.getElementById("animation3").style.cssText = 'display: none';
+            document.getElementById("animation").style.cssText = 'display: none';
+            break;
+        }
+      }
+      function resetanimation(e) {
+        switch(e.id) {
+          case "section1":
+            document.getElementById("animation1").style.cssText = 'display: block';
+            document.getElementById("animation2").style.cssText = 'display: none';
+            document.getElementById("animation3").style.cssText = 'display: none';
+            document.getElementById("animation").style.cssText = 'display: none';
+            break;
+          case "section2":
+            document.getElementById("animation1").style.cssText = 'display: none';
+            document.getElementById("animation2").style.cssText = 'display: block';
+            document.getElementById("animation3").style.cssText = 'display: none';
+            document.getElementById("animation").style.cssText = 'display: none';
+            break;
+          case "section3":
+            document.getElementById("animation3").style.cssText = 'display: block';
+            document.getElementById("animation2").style.cssText = 'display: none';
+            document.getElementById("animation1").style.cssText = 'display: none';
+            document.getElementById("animation").style.cssText = 'display: none';
+            break;
+          default:
+            document.getElementById("animation1").style.cssText = 'display: none';
+            document.getElementById("animation2").style.cssText = 'display: block';
+            document.getElementById("animation3").style.cssText = 'display: none';
+            document.getElementById("animation").style.cssText = 'display: none';
+            break;
+        }
+      }
+    </script>
   </head>
   <body>
-    <section class="grid-container">
-      <div class="grid-item1 tooltip" id="animation1">
-        Animation1
-        <span class="tooltiptext">This animation is defaul anmation</span>
+    <div class="container">
+      <div style="float: left; width: 40rem; margin-left: 17.5rem;" >
+        <div>
+          <p style="color: white; font-size: 4.5rem;">Real-Time. In Sync.
+              At Scale.
+          </p>
+        </div>
+        <div><p class="description">Disappears on Scroll</p></div>
+        <div class="section" onmouseover="Animation(this)" onmouseout="resetanimation(this)" id="section1">
+          <h1 class="section_title">Section 1</h1>
+          <p class="description">The lines start at a random point, end at a random point.</p>
+        </div>
+        <br>
+        <div class="section" onmouseover="Animation(this)" onmouseout="resetanimation(this)" id="section2">
+          <h1 class="section_title">Section 2</h1>
+          <p class="description">The lines start at the United States, end at random points.</p>
+        </div>
+        <br>
+        <div class="section" onmouseover="Animation(this)" onmouseout="resetanimation(this)" id="section3">
+          <h1 class="section_title">Section 3</h1>
+          <p class="description">The lines start at random points, end at the United States.</p>
+        </div>
+
       </div>
-      <div class="grid-item2 tooltip" id="animation2">
-        Animation2
-        <span class="tooltiptext"
-          >These lines are combined to the United State</span
-        >
-      </div>
-      <div class="grid-item3 tooltip" id="animation3">
-        Animation3
-        <span class="tooltiptext"
-          >These lines are distributed from the United State</span
-        >
-      </div>
-      <div class="grid-item4 tooltip" id="animation4">Animation4</div>
-      <span class="tooltiptext">This animation is a test animation</span>
-    </section>
+      <div class="animation" id="animation"></div>
+      <section class="grid-container">
+        <div class="grid-item1" id="animation1">
+        </div>
+        <div class="grid-item2" id="animation2">
+        </div>
+        <div class="grid-item3" id="animation3">
+        </div>
+      </section>
+    </div>
   </body>
 </html>
